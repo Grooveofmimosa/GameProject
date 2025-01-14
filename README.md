@@ -5,5 +5,5 @@
 - Peixuan Li, ra24381@bristol.ac.uk, pluvo070
 - Shuyin Deng, ta24493@bristol.ac.uk, Ruby-sy
 - Yibu Ma, sd24536@bristol.ac.uk, Grooveofmimosa
-- Yu Qiu,
+- Yu Qiu, kp24679@bristol.ac.uk, PekkaLnx
 
