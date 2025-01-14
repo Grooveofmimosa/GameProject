@@ -1,6 +1,6 @@
 # Group Members
 
-- Jiahao Liu, 
+- Jiahao Liu,qi24477@bristol.ac.uk,TYHD759 
 - Jiaxin Fan,sg24148@bristol.ac.uk,paidaxin760
 - Peixuan Li,
 - Shuyin Deng, ta24493@bristol.ac.uk, Ruby-sy
