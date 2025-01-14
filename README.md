@@ -1,7 +1,7 @@
 # Group Members
 
 - Jiahao Liu, 
-- Jiaxin Fan,
+- Jiaxin Fan,sg24148@bristol.ac.uk,paidaxin670
 - Peixuan Li,
 - Shuyin Deng, ta24493@bristol.ac.uk, Ruby-sy
 - Yibu Ma, sd24536@bristol.ac.uk, Grooveofmimosa
