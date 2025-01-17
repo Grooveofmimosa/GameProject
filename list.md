@@ -1,0 +1,8 @@
+- [宝可梦](https://jslegend.itch.io/p5-pokemon-prototype) p5.js
+- [索尼克](https://jslegend.itch.io/sonic-ring-run) js + kaplay
+- [多人赛车](https://github.com/vishalgaddam873/p5-multiplayer-car-race-game) p5.js
+- 贪吃蛇  [例1](https://github.com/strikemike2k/snake) [例2]() [例3](https://github.com/elena-in-code/Snake-Game) p5.js
+- [FlappyBird](https://github.com/barzin144/FlappyBird) p5.js
+- [敲砖块](https://github.com/yining1023/brickBreaker?tab=readme-ov-file)
+- [eatsmaller](https://github.com/DomonJi/eatsmaller?tab=readme-ov-file) p5.js
+- [p5.js游戏集合](https://github.com/Jkutkut/JS-GameRoom?tab=readme-ov-file)贪吃蛇 太空大战等
