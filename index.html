@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sketch</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+
+    <!-- 引入jquery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <!-- 放大画面 -->
+    <style>
+      canvas {
+        transform: scale(1.5);
+        transform-origin: top left; 
+      }
+    </style>
+    
+
+  </head>
+
+  <body>
+    <script src="asset.js"></script>
+    <script src="tools.js"></script>
+    <script src="message.js"></script>
+
+    <!--加载类的定义-->
+    <script src="coll.js"></script>
+    <script src="water.js"></script>
+    <script src="oneBox.js"></script>
+    <script src="oneDiamond.js"></script>
+    <script src="oneFlag.js"></script>
+    <script src="player.js"></script>
+    <script src="others.js"></script>
+    
+    <script src="oneEnemy.js"></script>
+    <script src="oneTrap.js"></script>
+    <script src="interact.js"></script>
+
+
+    <!--加载各个关卡画面, 提取json数据到js变量中-->
+    <script src="level1.js"></script>
+
+    <script src="sketch.js"></script>
+  </body>
+</html>
