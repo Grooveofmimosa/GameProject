@@ -48,6 +48,7 @@ let atlasFile1 = "capoo_basic_face_001.atlas";
 let animation1 = "basic";
 
 let atlas2;
+let assetManager2;
 let atlasLoader2;
 let skeletonMesh2;
 let skeletonFile2 = "capoo_hat_102.json";
@@ -55,6 +56,7 @@ let atlasFile2 = "capoo_hat_102.atlas";
 let animation2 = "animation";
 
 let atlas3;
+let assetManager3;
 let atlasLoader3;
 let skeletonMesh3;
 let skeletonFile3 = "capoo_back_102.json";
@@ -90,13 +92,21 @@ function init() {
     assetManager1.loadText(skeletonFile1);
     assetManager1.loadTextureAtlas(atlasFile1);
 
+    assetManager2 = new spine.AssetManager(baseUrl);
+    assetManager2.loadText(skeletonFile2);
+    assetManager2.loadTextureAtlas(atlasFile2);
+
+    assetManager3 = new spine.AssetManager(baseUrl);
+    assetManager3.loadText(skeletonFile3);
+    assetManager3.loadTextureAtlas(atlasFile3);
+
     console.log("initialized");
     requestAnimationFrame(load);
 }
 
 function load(name, scale) {
     console.log("loading");
-    if (assetManager.isLoadingComplete() && assetManager1.isLoadingComplete()) {
+    if (assetManager.isLoadingComplete() && assetManager1.isLoadingComplete() && assetManager2.isLoadingComplete() && assetManager3.isLoadingComplete()) {
     console.log(assetManager.isLoadingComplete());
     // Add a box to the scene to which we attach the skeleton mesh
     // geometry = new THREE.BoxGeometry(200, 200, 200);
@@ -124,7 +134,7 @@ function load(name, scale) {
     );
 
     // Create a SkeletonMesh from the data and attach it to the scene
-    skeletonMesh = new spine.SkeletonMesh({ skeletonData });
+    skeletonMesh = new spine.SkeletonMesh({ skeletonData: skeletonData });
     skeletonMesh.state.setAnimation(0, animation, true);
     // mesh.add(skeletonMesh);
     scene.add(skeletonMesh);
@@ -140,9 +150,33 @@ function load(name, scale) {
     );
     skeletonMesh1 = new spine.SkeletonMesh({ skeletonData: skeletonData1 });
     skeletonMesh1.state.setAnimation(0, animation1, true);
-    skeletonMesh.add(skeletonMesh1);
-    skeletonMesh1.position.set(-30, 50
-        , 5);
+    scene.add(skeletonMesh1);
+
+
+    // add hat
+    atlas2 = assetManager2.require(atlasFile2);
+    atlasLoader2 = new spine.AtlasAttachmentLoader(atlas2);
+    let skeletonJson2 = new spine.SkeletonJson(atlasLoader2);
+    skeletonJson2.scale = 0.4;
+    let skeletonData2 = skeletonJson2.readSkeletonData(
+        assetManager2.require(skeletonFile2)
+    );
+    skeletonMesh2 = new spine.SkeletonMesh({ skeletonData: skeletonData2 });
+    skeletonMesh2.state.setAnimation(0, animation2, true);
+    scene.add(skeletonMesh2);
+
+    // add back
+    atlas3 = assetManager3.require(atlasFile3);
+    atlasLoader3 = new spine.AtlasAttachmentLoader(atlas3);
+    let skeletonJson3 = new spine.SkeletonJson(atlasLoader3);
+    skeletonJson3.scale = 0.4;
+    let skeletonData3 = skeletonJson3.readSkeletonData(
+        assetManager3.require(skeletonFile3)
+    );
+    skeletonMesh3 = new spine.SkeletonMesh({ skeletonData: skeletonData3 });
+    skeletonMesh3.state.setAnimation(0, animation3, true);
+    scene.add(skeletonMesh3);
+
 
     requestAnimationFrame(render);
     } else requestAnimationFrame(load);
@@ -165,6 +199,25 @@ function render() {
     // update the animation
     skeletonMesh.update(delta);
     skeletonMesh1.update(delta);
+    skeletonMesh2.update(delta);
+    skeletonMesh3.update(delta);
+    
+    
+    // Synchronize the body_face bone of skeletonMesh1 with skeletonMesh
+    let bodyFaceSlot = skeletonMesh.skeleton.findBone("body_face_root");
+    let faceBodySlot = skeletonMesh1.skeleton.findBone("root");
+    skeletonMesh1.position.set(bodyFaceSlot.worldX - faceBodySlot.worldX, bodyFaceSlot.worldY - faceBodySlot.worldY, 1); 
+
+    let bodyHatSlot = skeletonMesh.skeleton.findBone("hat");
+    let hatBodySlot = skeletonMesh2.skeleton.findBone("root");
+    skeletonMesh2.position.set(bodyHatSlot.worldX - hatBodySlot.worldX, bodyHatSlot.worldY - hatBodySlot.worldY, 1); 
+
+    let bodyBackSlot = skeletonMesh.skeleton.findBone("back");
+    let backBodySlot = skeletonMesh3.skeleton.findBone("root");
+    skeletonMesh3.position.set(bodyBackSlot.worldX - backBodySlot.worldX, bodyBackSlot.worldY - backBodySlot.worldY, -1);
+
+
+
 
     // render the scene
     renderer.render(scene, camera);
